@@ -8,52 +8,83 @@ namespace AoC_D11 {
 
 class AoC_D11::Solution {
 private:
-	struct pos_t {
+	typedef struct pos_t {
 		int r = -1, c = -1;
 		bool operator==(const pos_t& rhs) { return r == rhs.r && c == rhs.c; }
 		bool operator!=(const pos_t& rhs) { return !(*this == rhs); }
 		pos_t& operator+=(const pos_t& rhs) { r += rhs.r; c += rhs.c; return *this; }
 		friend pos_t operator+(pos_t lhs, const pos_t& rhs) { lhs += rhs; return lhs; }
+		bool inRange(const int& height, const int& width) { return 0 <= r && r < height && 0 <= c && c < width; }
 		friend std::ostream& operator<<(std::ostream& out, const pos_t& pos) {
 			return out << "{" << pos.r << ", " << pos.c << "}";
 		}
 	};
 
-	struct map_t {
-		char at(const pos_t& p) const { return grid[p.c * width + p.r]; }
-		char& at(const pos_t& p) { return grid[p.c * width + p.r]; }
-		char at(const int& r, const int& c) const { return grid[c * width + r]; }
-		char& at(const int& r, const int& c) { return grid[c * width + r]; }
+	typedef struct map_t {
+		char at(const pos_t& p) const { return grid[p.r * width + p.c]; }
+		char& at(const pos_t& p) { return grid[p.r * width + p.c]; }
+		char at(const int& r, const int& c) const { return grid[r * width + c]; }
+		char& at(const int& r, const int& c) { return grid[r * width + c]; }
 		std::vector<char> grid;
 		int width = 0;
 		int height = 0;
+
+		friend std::ostream& operator<<(std::ostream& out, const map_t& map) {
+			std::stringstream ss;
+			ss << "\r\n";
+			for (int i = 0; i < map.grid.size(); i++) {
+				ss << map.grid[i];
+				if ((i + 1) % map.width == 0) {
+					ss << "\r\n";
+				}
+			}
+			ss << "\r\n";
+			return out << ss.str();
+		}
 	};
 
-	struct space_t {
-		map_t image, map;
-		vector<pos_t> stars;
-	};
+	const char emptySpace = '.';
+	const char star = '#';
 
-	const pos_t up{ 0, -1 };
-	const pos_t down{ 0, 1 };
-	const pos_t left{ -1, 0 };
-	const pos_t right{ 1, 0 };
+private:
+	map_t mMap;
+
 public:
 	Solution(const vector<string>& lines) {
-		mSpace.image = getImage(lines);
-		mSpace.map = expandImage(mSpace.image);
+		mMap = getImage(lines);
 	}
 
 	int64_t solvePart1() {
-		return 0;
+		vector<pos_t> stars = findStars(mMap, 2);
+		return sumAllDistances(stars);
 	}
 
 	int64_t solvePart2() {
-		return 0;
+		vector<pos_t> stars = findStars(mMap, 1000000);
+		return sumAllDistances(stars);
+	}
+
+	void printOriginalMap() {
+		cout << mMap;
 	}
 private:
-	space_t mSpace;
-private:
+	int64_t sumAllDistances(const vector<pos_t>& stars) {
+		int numStars = stars.size();
+		//vector<vector<int>> distances(numStars, vector<int>(numStars, 0));
+		int64_t sum = 0;
+		for (int i = 0; i < numStars; i++) {
+			for (int j = 0; j < i; j++) {
+				//distances[i][j] = distance(stars[i], stars[j]);
+				sum += (int64_t)distance(stars[i], stars[j]);
+			}
+		}
+		return sum;
+	}
+
+	int distance(const pos_t& a, const pos_t& b) {
+		return abs(a.r - b.r) + abs(a.c - b.c);
+	}
+
 	map_t getImage(const vector<string>& lines) {
 		map_t image;
 		image.height = (int)lines.size();
@@ -64,32 +95,114 @@ private:
 		return image;
 	}
 
-	map_t expandImage(const map_t& image, const char& c = '.') {
-		map_t map;
-		auto& imageGrid = image.grid;
-		int ih = image.height, iw = image.width;
+	vector<pos_t> findStars(const map_t& map, int expanseFactor) {
+		vector<pos_t> stars;
 
-		for (int i = 0; i < image.height; i++) {
+		auto& height = map.height;
+		auto& width = map.width;
+
+		vector<int> rowOffsets(height, 0);
+		vector<int> colOffsets(width, 0);
+
+		for (int i = 0; i < map.height; i++) {
+			bool emptyRow = true;
+			for (int j = 0; j < map.width; j++) {
+				if (map.at(i, j) == star) {
+					emptyRow = false;
+				}
+			}
+			if (i == 0) rowOffsets[i] = emptyRow ? 1 : 0;
+			else rowOffsets[i] = emptyRow ? rowOffsets[i - 1] + 1 : rowOffsets[i - 1];
+		}
+
+		for (int j = 0; j < map.width; j++) {
+			bool emptyCol = true;
+			for (int i = 0; i < map.height; i++) {
+				if (map.at(i, j) == star) {
+					emptyCol = false;
+				}
+			}
+			if (j == 0) colOffsets[j] = emptyCol ? 1 : 0;
+			else colOffsets[j] = emptyCol ? colOffsets[j - 1] + 1 : colOffsets[j - 1];
+		}
+
+		for (int i = 0; i < map.height; i++) {
+			for (int j = 0; j < map.width; j++) {
+				if (map.at(i, j) == star) {
+					int row = i + rowOffsets[i] * (expanseFactor - 1);
+					int col = j + colOffsets[j] * (expanseFactor - 1);
+					stars.push_back({ row,col });
+				}
+			}
+		}
+		return stars;
+	}
+
+	/* deprecated
+	map_t expandRows(const map_t& map) {
+		map_t expanded = map;
+		auto& eGrid = expanded.grid;
+		auto& mGrid = map.grid;
+		int& height = expanded.height;
+		int& width = expanded.width;
+
+		int rows = 0;
+		for (int i = 0; i < map.height; i++) {
 			bool empty = true;
-			for (int j = 0; j < image.width; j++) {
-				if (image.at(i,j) != c) {
+			for (int j = 0; j < map.width; j++) {
+				if (map.at(i, j) != emptySpace) {
 					empty = false;
 					break;
 				}
 			}
-			cout << i << " "<< i+image.width << " " << empty << endl;
+			if (empty) {
+				eGrid.insert(eGrid.begin() + (i + rows) * width, mGrid.begin() + i * map.width, mGrid.begin() + (i + 1) * map.width);
+				rows++;
+			}
+
 		}
-		return map;
+		height += rows;
+		return expanded;
 	}
 
-	vector<pos_t> findStars(const map_t& map) {
-		return {};
+	map_t expandCols(const map_t& map) {
+		map_t expanded = map;
+		auto& eGrid = expanded.grid;
+		int& width = expanded.width;
+
+		int cols = 0;
+		for (int j = 0; j < map.width; j++) {
+			bool empty = true;
+			for (int i = 0; i < map.height; i++) {
+				if (map.at(i, j) != emptySpace) {
+					empty = false;
+					break;
+				}
+			}
+			if (empty) {
+				int offset = 0;
+				for (int i = 0; i < map.height; i++) {
+					eGrid.insert(eGrid.begin() + i * (width + cols) + (j + cols) + offset, emptySpace);
+					offset++;
+				}
+				cols++;
+			}
+		}
+		width += cols;
+		return expanded;
 	}
 
+	map_t expandImage(const map_t& image) {
+		map_t expanded = image;
+		expanded = expandRows(expanded);
+		expanded = expandCols(expanded);
+		return expanded;
+	}
+	*/
 };
 
 int AoC_D11::solve() {
-	auto lines = AoC::readFile("./src/D11_Cosmic_Expansion/small.txt");
+	auto lines = AoC::readFile("./src/D11_Cosmic_Expansion/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;
@@ -100,9 +213,10 @@ int AoC_D11::solve() {
 	cout << oss.str();
 
 	Solution solution(lines);
+	solution.printOriginalMap();
 	std::cout << "-----------------------------------------------------\r\n";
 	std::cout << "Part 1 = " << solution.solvePart1() << "\r\n"; // 6725
-	std::cout << "Part 2 = " << solution.solvePart2() << "\r\n"; // 383
+	std::cout << "Part 2 = " << solution.solvePart2() << "\r\n"; // 357134560737
 	std::cout << "-----------------------------------------------------\r\n";
 
 	return 0;
