@@ -23,8 +23,8 @@ private:
 	typedef struct map_t {
 		char at(const pos_t& p) const { return grid[p.r * width + p.c]; }
 		char& at(const pos_t& p) { return grid[p.r * width + p.c]; }
-		char at(const int& r, const int& c) const { return grid[c * width + r]; }
-		char& at(const int& r, const int& c) { return grid[c * width + r]; }
+		char at(const int& r, const int& c) const { return grid[r * width + c]; }
+		char& at(const int& r, const int& c) { return grid[r * width + c]; }
 		std::vector<char> grid;
 		int width = 0;
 		int height = 0;
