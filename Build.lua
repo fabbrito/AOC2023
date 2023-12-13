@@ -1,7 +1,7 @@
 workspace "AOC_2023"
 architecture "x64"
 configurations {"Debug", "Release", "Dist"}
-startproject "Challenges"
+startproject "AOC_2023"
 
 -- Workspace-wide build options for MSVC
 filter "system:windows"
@@ -14,3 +14,4 @@ include "Utils/Build-Utils.lua"
 group ""
 
 include "AOC_2023/Build-Challenges.lua"
+include "AOC_2022/Build-Challenges.lua"

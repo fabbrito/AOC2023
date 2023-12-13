@@ -1,4 +1,4 @@
-project "AOC_2023"
+project "AOC_2022"
 kind "ConsoleApp"
 language "C++"
 cppdialect "C++20"

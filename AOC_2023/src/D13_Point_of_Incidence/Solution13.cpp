@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Solution13.h"
 
-namespace AoC_D13 {
+namespace AoC2023_D13 {
 	using namespace std;
 
 	typedef struct field_t {
@@ -113,7 +113,7 @@ namespace AoC_D13 {
 	}
 }
 
-int AoC_D13::solve() {
+int AoC2023_D13::solve() {
 	auto lines = AoC::readFile("./src/D13_Point_of_Incidence/input.txt");
 	if (lines.empty()) return 1;
 

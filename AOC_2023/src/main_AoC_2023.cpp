@@ -15,7 +15,7 @@
 
 int main(int argc, char** argv)
 {
-	int code = AoC_D13::solve();
+	int code = AoC2023_D13::solve();
 
 	return code;
 }
