@@ -8,10 +8,13 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <optional>
 
+#include <span>
 #include <vector>
 #include <array>
 #include <string>
+#include <string_view>
 #include <stack>
 #include <deque>
 #include <queue>

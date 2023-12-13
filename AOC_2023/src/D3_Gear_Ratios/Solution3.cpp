@@ -178,10 +178,12 @@ int AoC_D3::solve()
 	auto lines = AoC::readFile("./src/D3_Gear_Ratios/input.txt");
 	if (lines.empty()) return 1;
 
+	std::ostringstream oss;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		oss << line << "\r\n";
 	}
-	cout << "\r\n";
+	oss << "\r\n";
+	cout << oss.str();
 
 	Part1 sol1;
 	auto sum_ids = sol1.sumValidPartsIds(lines);

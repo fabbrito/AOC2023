@@ -8,12 +8,13 @@
 //#include <D7_Camel_Cards/Solution7.h>
 //#include <D8_Haunted_Wasteland/Solution8.h>
 //#include <D9_Mirage_Maintenance/Solution9.h>
-#include <D10_Pipe_Maze/Solution10.h>
-#include <D11_Cosmic_Expansion/Solution11.h>
+//#include <D10_Pipe_Maze/Solution10.h>
+//#include <D11_Cosmic_Expansion/Solution11.h>
+#include <D12_Hot_Springs/Solution12.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC_D10::solve();
+	int code = AoC_D12::solve();
 
 	return code;
 }

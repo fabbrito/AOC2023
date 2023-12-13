@@ -134,10 +134,13 @@ private:
 int AoC_D7::solve() {
 	auto lines = AoC::readFile("./src/D7_Camel_Cards/input.txt");
 	if (lines.empty()) return 1;
+
+	std::ostringstream oss;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		oss << line << "\r\n";
 	}
-	cout << "\r\n";
+	oss << "\r\n";
+	cout << oss.str();
 
 	Solution solution;
 	std::cout << "-----------------------------------------------------\r\n";

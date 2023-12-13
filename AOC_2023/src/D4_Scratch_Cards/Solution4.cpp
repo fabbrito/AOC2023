@@ -88,10 +88,12 @@ int AoC_D4::solve()
 	auto lines = AoC::readFile("./src/D4_Scratch_Cards/input.txt");
 	if (lines.empty()) return 1;
 
+	std::ostringstream oss;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		oss << line << "\r\n";
 	}
-	cout << "\r\n";
+	oss << "\r\n";
+	cout << oss.str();
 
 	Part1 sol1;
 	auto sum_points = sol1.sumPoints(lines);

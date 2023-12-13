@@ -191,10 +191,12 @@ namespace AoC_D5 {
 int AoC_D5::solve() {
 	auto lines = AoC::readFile("./src/D5_If_You_Give_A_Seed_A_Fertilizer/input.txt");
 	if (lines.empty()) return 1;
+	std::ostringstream oss;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		oss << line << "\r\n";
 	}
-	cout << "\r\n";
+	oss << "\r\n";
+	cout << oss.str();
 
 	//Solution solution(lines);
 	std::cout << "-----------------------------------------------------\r\n";

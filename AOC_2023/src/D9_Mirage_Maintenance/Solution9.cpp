@@ -81,10 +81,12 @@ private:
 int AoC_D9::solve() {
 	auto lines = AoC::readFile("./src/D9_Mirage_Maintenance/input.txt");
 	if (lines.empty()) return 1;
+	std::ostringstream oss;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		oss << line << "\r\n";
 	}
-	cout << "\r\n";
+	oss << "\r\n";
+	cout << oss.str();
 
 	Solution solution(lines);
 	std::cout << "-----------------------------------------------------\r\n";
