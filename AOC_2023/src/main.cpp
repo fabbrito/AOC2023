@@ -10,11 +10,12 @@
 //#include <D9_Mirage_Maintenance/Solution9.h>
 //#include <D10_Pipe_Maze/Solution10.h>
 //#include <D11_Cosmic_Expansion/Solution11.h>
-#include <D12_Hot_Springs/Solution12.h>
+//#include <D12_Hot_Springs/Solution12.h>
+#include <D13_Point_of_Incidence/Solution13.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC_D12::solve();
+	int code = AoC_D13::solve();
 
 	return code;
 }
