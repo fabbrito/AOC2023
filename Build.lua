@@ -1,4 +1,4 @@
-workspace "AOC_2023"
+workspace "AOC"
 architecture "x64"
 configurations {"Debug", "Release", "Dist"}
 startproject "AOC_2023"
