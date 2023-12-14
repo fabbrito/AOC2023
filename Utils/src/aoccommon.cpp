@@ -22,6 +22,8 @@ std::vector<std::string> AoC::parseString(std::string& str, const std::string& d
 		}
 		str.erase(0, pos + delimiter.length());
 	}
-	output.emplace_back(str);
+	if (!ignoreEmpty || str.length() > 0) {
+		output.emplace_back(str);
+	}
 	return output;
 }
