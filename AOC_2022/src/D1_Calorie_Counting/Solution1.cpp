@@ -61,8 +61,8 @@ int AoC2022_D1::solve() {
 	std::cout << oss.str();
 
 	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Part 1 = " << solvePart1(lines) << "\r\n"; // 33356
-	std::cout << "Part 2 = " << solvePart2(lines) << "\r\n"; // 28475
+	std::cout << "Part 1 = " << solvePart1(lines) << "\r\n"; // 69528
+	std::cout << "Part 2 = " << solvePart2(lines) << "\r\n"; // 206152
 	std::cout << "-----------------------------------------------------\r\n";
 
 	return 0;
