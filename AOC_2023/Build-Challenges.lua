@@ -27,14 +27,14 @@ runtime "Debug"
 symbols "On"
 
 filter "configurations:Release"
-defines {"RELEASE"}
+defines {"RELEASE;NDEBUG"}
 runtime "Release"
 optimize "On"
 symbols "On"
 postbuildcommands {"{COPYDIR} .\\*.txt %{cfg.targetdir} "}
 
 filter "configurations:Dist"
-defines {"DIST"}
+defines {"DIST;NDEBUG"}
 runtime "Release"
 optimize "On"
 symbols "Off"
