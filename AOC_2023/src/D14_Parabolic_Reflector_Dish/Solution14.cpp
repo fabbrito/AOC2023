@@ -4,6 +4,7 @@
 namespace AoC2023_D14 {
 	using namespace std;
 
+	// --------------------------- Types ----------------------------------
 	typedef struct pos_t {
 		int r = -1, c = -1;
 
@@ -40,6 +41,7 @@ namespace AoC2023_D14 {
 		}
 	};
 
+	// ------------------------- Constants --------------------------------
 	static constexpr pos_t NORTH = { -1, 0 };
 	static constexpr pos_t SOUTH = { 1, 0 };
 	static constexpr pos_t EAST = { 0, 1 };
@@ -52,6 +54,7 @@ namespace AoC2023_D14 {
 
 	static constexpr size_t TEST_ITERATIONS = 1000000000;
 
+	// -------------------------- Functions -------------------------------
 	board_t parseData(const vector<string>& lines) {
 		board_t board{};
 		board.height = 0;
@@ -139,19 +142,17 @@ namespace AoC2023_D14 {
 
 		std::hash<std::string> hasher;
 		std::vector<size_t> hashes;
-		int cycleLength = 0, outsideLoop = 0;
+		int repetitionLength = 0, repetitionOffset = 0;
 
 		for (int i = 0; i < TEST_ITERATIONS; i++) {
 			board = cycleBoard(board);
 			size_t hash = hasher(board.grid);
 
-			// check if the hash is already in the vector
 			auto it = std::find(hashes.begin(), hashes.end(), hash);
 			if (it != hashes.end()) {
-				// we have a cycle
 				int previous_index = std::distance(hashes.begin(), it);
-				cycleLength = hashes.size() - previous_index;
-				outsideLoop = previous_index;
+				repetitionLength = hashes.size() - previous_index;
+				repetitionOffset = previous_index;
 				break;
 			}
 			else {
@@ -159,10 +160,12 @@ namespace AoC2023_D14 {
 			}
 		}
 
+		// back to original board
 		board = originalBoard;
-		// calculate the state of the map after 1000000000 iterations, considering the cycle
-		int iterations = ((TEST_ITERATIONS - outsideLoop) % cycleLength) + outsideLoop;
-		for (int i = 0; i < iterations; ++i) {
+		// repetitionOffset: this iterations prepare the board to the beginning of the repetitions
+		// (...) % repetitionLength: iterate to a state that's similar to the objective
+		int nIterations = ((TEST_ITERATIONS - repetitionOffset) % repetitionLength) + repetitionOffset;
+		for (int i = 0; i < nIterations; ++i) {
 			board = cycleBoard(board);
 		}
 
