@@ -5,10 +5,11 @@
 //#include <D4_Camp_Cleanup/Solution4.h>
 //#include <D5_Supply_Stacks/Solution5.h>
 //#include <D6_Tuning_Trouble/Solution6.h>
-#include <D7_No_Space_Left_On_Device/Solution7.h>
+//#include <D7_No_Space_Left_On_Device/Solution7.h>
+#include <D8_Treetop_Tree_House/Solution8.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2022_D7::solve();
+	int code = AoC2022_D8::solve();
 	return code;
 }
