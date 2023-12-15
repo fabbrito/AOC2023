@@ -12,11 +12,12 @@
 //#include <D11_Cosmic_Expansion/Solution11.h>
 //#include <D12_Hot_Springs/Solution12.h>
 //#include <D13_Point_of_Incidence/Solution13.h>
-#include <D14_Parabolic_Reflector_Dish/Solution14.h>
+//#include <D14_Parabolic_Reflector_Dish/Solution14.h>
+#include <D15_Lens_Library/Solution15.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2023_D14::solve();
+	int code = AoC2023_D15::solve();
 
 	return code;
 }

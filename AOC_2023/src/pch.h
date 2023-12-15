@@ -23,6 +23,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
+#include <cassert>
 #include <bitset>
 
 #include "utils.h"
