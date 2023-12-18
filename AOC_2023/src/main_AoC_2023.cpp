@@ -13,11 +13,18 @@
 //#include <D12_Hot_Springs/Solution12.h>
 //#include <D13_Point_of_Incidence/Solution13.h>
 //#include <D14_Parabolic_Reflector_Dish/Solution14.h>
-#include <D15_Lens_Library/Solution15.h>
+//#include <D15_Lens_Library/Solution15.h>
+//#include <D16_The_Floor_Will_Be_Lava/Solution16.h>
+//#include <D17_Clumsy_Crucible/Solution17.h>
+#include <D18_Lavaduct_Lagoon/Solution18.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2023_D15::solve();
+	int code = AoC2023_D18::solve();
+#ifndef DEBUG
+	std::cout << "Press enter to exit...";
+	std::cin.get();
+#endif // DEBUG
 
 	return code;
 }
