@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution9.h"
 
-namespace AoC_D9 {
+namespace AoC2023_D9 {
 	using namespace std;
 	class Solution;
 }
 
-class AoC_D9::Solution {
+class AoC2023_D9::Solution {
 public:
 	Solution(vector<string> lines) {
 		setData(lines);
@@ -78,7 +78,7 @@ private:
 	}
 };
 
-int AoC_D9::solve() {
+int AoC2023_D9::solve() {
 	auto lines = AoC::readFile("./src/D9_Mirage_Maintenance/input.txt");
 	if (lines.empty()) return 1;
 	std::ostringstream oss;

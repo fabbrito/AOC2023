@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "Solution4.h"
 
-namespace AoC_D4 {
+namespace AoC2023_D4 {
 	using namespace std;
 	class Solution;
 	class Part1;
 	class Part2;
 }
 
-class AoC_D4::Solution {
+class AoC2023_D4::Solution {
 public:
 	struct CardData {
 		int id = -1, wins = 0, points = 0;
@@ -54,7 +54,7 @@ protected:
 	}
 };
 
-class AoC_D4::Part1 : public AoC_D4::Solution {
+class AoC2023_D4::Part1 : public AoC2023_D4::Solution {
 public:
 	int sumPoints(vector<string> game_lines) {
 		int sum = 0;
@@ -66,7 +66,7 @@ public:
 	}
 };
 
-class AoC_D4::Part2 : public AoC_D4::Solution {
+class AoC2023_D4::Part2 : public AoC2023_D4::Solution {
 public:
 	int totalOfCards(vector<string> game_lines) {
 		int n = game_lines.size();
@@ -83,7 +83,7 @@ public:
 	}
 };
 
-int AoC_D4::solve()
+int AoC2023_D4::solve()
 {
 	auto lines = AoC::readFile("./src/D4_Scratch_Cards/input.txt");
 	if (lines.empty()) return 1;

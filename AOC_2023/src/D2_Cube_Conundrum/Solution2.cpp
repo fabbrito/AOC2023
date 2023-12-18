@@ -1,59 +1,103 @@
 #include "pch.h"
 #include "Solution2.h"
 
-int AoC_D2::solve()
-{
-	auto lines = AoC::readFile("./src/D2_Cube_Conundrum/input.txt");
-	if (lines.empty()) return 1;
+namespace AoC2023_D2 {
+	using namespace std;
 
-	std::unordered_map<std::string, int> config = { 
-		{"red",12},
-		{"green",13},
-		{"blue",14},
+	// --------------------------- Types ----------------------------------
+
+	struct game_t {
+		int id = 0;
+		std::unordered_map<std::string, int> tokenMap;
+		int rounds = 0;
 	};
 
-	int sum_ids = 0, sum_powers = 0;
-	for (auto& line : lines) {
-		//std::cout << "-----------------------------------------------------\r\n";
-		//std::cout << line << std::endl;
-		auto game = AoC::parseString(line, ": ");
+	// -------------------------- Functions -------------------------------
+	vector<game_t> parseGames(const vector<string>& lines) {
+		vector<game_t> games;
+		for (string line : lines) {
+			game_t game;
+			auto infoVec = AoC::parseString(line, ": ", true);
+			game.id = std::stoi(AoC::parseString(infoVec.front(), " ").back());
 
-		AoC::parseString(game[0], " ");
-		int game_id = std::atoi(game[0].c_str());
-		//std::cout << game_id << std::endl;
-
-		auto rounds = AoC::parseString(game[1], "; ");
-
-		std::unordered_map<std::string, int> cube_map;
-
-		for (auto& round : rounds) {
-			auto tokens = AoC::parseString(round, ", ");
-			for (auto& token : tokens) {
-				auto cubes = AoC::parseString(token, " ");
-				cube_map[token] = std::max(cube_map[token], std::atoi(cubes[0].c_str()));
+			auto roundsVec = AoC::parseString(infoVec.back(), "; ", true);
+			game.rounds = roundsVec.size();
+			for (string round : roundsVec) {
+				auto turnsVec = AoC::parseString(round, ", ");
+				for (auto& turn : turnsVec) {
+					auto tokenVec = AoC::parseString(turn, " ");
+					auto& token = tokenVec[1];
+					auto numCubes = std::stoi(tokenVec[0]);
+					if (game.tokenMap.find(token) != game.tokenMap.end()) {
+						game.tokenMap[token] = std::max(game.tokenMap[token], numCubes);
+					}
+					else {
+						game.tokenMap[token] = numCubes;
+					}
+				}
 			}
+			games.push_back(game);
 		}
-
-		int power = 1;
-		bool possible_game = true;
-		for (auto& [color, quant] : cube_map) {
-			//std::cout << "max " << color << " -> " << quant << "\r\n";
-			power *= quant;
-			if (config[color] < quant) {
-				possible_game = false;
-			}
-		}
-		sum_powers += power;
-		if (possible_game) {
-			sum_ids += game_id;
-		}
+		return games;
 	}
 
-	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Possible games: Sum of the ids = " << sum_ids << "\r\n";
-	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Sum of powers = " << sum_powers << "\r\n";
-	std::cout << "-----------------------------------------------------\r\n";
 
+	// --------------------------- Part 1 ---------------------------------
+	int solvePart1(const vector<string>& lines) {
+		auto games = parseGames(lines);
+		std::unordered_map<std::string, int> gameConfig = { {"red",12},{"green",13},{"blue",14} };
+		int sumIds = 0;
+		for (auto& game : games) {
+			bool possibleGame = true;
+			for (auto& [token, numCubes] : game.tokenMap) {
+				if (gameConfig[token] < numCubes) {
+					possibleGame = false;
+					break;
+				}
+			}
+			if (possibleGame) {
+				sumIds += game.id;
+			}
+		}
+		return sumIds;
+	}
+
+	// --------------------------- Part 2 ---------------------------------
+	int solvePart2(const vector<string>& lines) {
+		auto games = parseGames(lines);
+		int sumPowers = 0;
+		for (auto& game : games) {
+			int power = 1;
+			for (auto& [_, numCubes] : game.tokenMap) {
+				power *= numCubes;
+			}
+			sumPowers += power;
+		}
+		return sumPowers;
+	}
+}
+
+int AoC2023_D2::solve()
+{
+#if 1 // tests
+	auto lines = AoC::readFile("./src/D2_Cube_Conundrum/small.txt");
+	if (lines.empty()) return 1;
+#else
+	auto lines = AoC::readFile("./src/D2_Cube_Conundrum/input.txt");
+	if (lines.empty()) return 1;
+#endif
+	std::ostringstream oss;
+	for (auto& line : lines) {
+		oss << line << "\r\n";
+	}
+	oss << "\r\n";
+	std::cout << oss.str();
+	auto part1 = solvePart1(lines);
+	auto part2 = solvePart2(lines);
+
+	std::cout << "-----------------------------------------------------\r\n";
+	std::cout << "Part 1 = " << part1 << "\r\n"; // 2528
+	std::cout << "Part 2 = " << part2 << "\r\n"; // 67363
+	std::cout << "-----------------------------------------------------\r\n";
 	return 0;
 }

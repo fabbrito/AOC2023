@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution11.h"
 
-namespace AoC_D11 {
+namespace AoC2023_D11 {
 	using namespace std;
 	class Solution;
 };
 
-class AoC_D11::Solution {
+class AoC2023_D11::Solution {
 private:
 	typedef struct pos_t {
 		int r = -1, c = -1;
@@ -137,71 +137,9 @@ private:
 		}
 		return stars;
 	}
-
-	/* deprecated
-	map_t expandRows(const map_t& map) {
-		map_t expanded = map;
-		auto& eGrid = expanded.grid;
-		auto& mGrid = map.grid;
-		int& height = expanded.height;
-		int& width = expanded.width;
-
-		int rows = 0;
-		for (int i = 0; i < map.height; i++) {
-			bool empty = true;
-			for (int j = 0; j < map.width; j++) {
-				if (map.at(i, j) != emptySpace) {
-					empty = false;
-					break;
-				}
-			}
-			if (empty) {
-				eGrid.insert(eGrid.begin() + (i + rows) * width, mGrid.begin() + i * map.width, mGrid.begin() + (i + 1) * map.width);
-				rows++;
-			}
-
-		}
-		height += rows;
-		return expanded;
-	}
-
-	map_t expandCols(const map_t& map) {
-		map_t expanded = map;
-		auto& eGrid = expanded.grid;
-		int& width = expanded.width;
-
-		int cols = 0;
-		for (int j = 0; j < map.width; j++) {
-			bool empty = true;
-			for (int i = 0; i < map.height; i++) {
-				if (map.at(i, j) != emptySpace) {
-					empty = false;
-					break;
-				}
-			}
-			if (empty) {
-				int offset = 0;
-				for (int i = 0; i < map.height; i++) {
-					eGrid.insert(eGrid.begin() + i * (width + cols) + (j + cols) + offset, emptySpace);
-					offset++;
-				}
-				cols++;
-			}
-		}
-		width += cols;
-		return expanded;
-	}
-
-	map_t expandImage(const map_t& image) {
-		map_t expanded = image;
-		expanded = expandRows(expanded);
-		expanded = expandCols(expanded);
-		return expanded;
-	}
-	*/
 };
 
-int AoC_D11::solve() {
+int AoC2023_D11::solve() {
 	auto lines = AoC::readFile("./src/D11_Cosmic_Expansion/input.txt");
 	if (lines.empty()) return 1;
 

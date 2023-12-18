@@ -1,4 +1,4 @@
 #pragma once
-namespace AoC_D2 {
+namespace AoC2023_D2 {
 	int solve();
 }

@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution7.h"
 
-namespace AoC_D7 {
+namespace AoC2023_D7 {
 	using namespace std;
 	class Solution;
 }
 
-class AoC_D7::Solution {
+class AoC2023_D7::Solution {
 public:
 	uint64_t solvePart1(const vector<string>& lines) {
 		const string order = "23456789TJQKA";
@@ -131,7 +131,7 @@ private:
 
 };
 
-int AoC_D7::solve() {
+int AoC2023_D7::solve() {
 	auto lines = AoC::readFile("./src/D7_Camel_Cards/input.txt");
 	if (lines.empty()) return 1;
 

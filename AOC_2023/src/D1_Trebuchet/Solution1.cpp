@@ -1,19 +1,25 @@
 #include "pch.h"
 #include "Solution1.h"
 
-namespace AoC_D1 {
-	int numberOnlyDigits(const std::string& str) {
+namespace AoC2023_D1 {
+	using namespace std;
+
+	// --------------------------- Types ----------------------------------
+
+	static const std::vector<std::string> DIGITS = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+
+	// -------------------------- Functions -------------------------------
+	int parseOnlyDigits(const std::string& str) {
 		int ns = str.length();
 		int i = 0, j = ns - 1;
 		while (i < ns && (str[i] < '0' || str[i] > '9')) i++;
-		while (j >=0 && (str[j] < '0' || str[j] > '9')) j--;
+		while (j >= 0 && (str[j] < '0' || str[j] > '9')) j--;
 
 		if (i >= ns || j < 0) return 0;
 		return static_cast<int>(str[i] - '0') * 10 + static_cast<int>(str[j] - '0');
 	}
 
-	int numberTextAndDigits(const std::string& str) {
-		const std::vector<std::string> digits = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+	int parseStringAndDigits(const std::string& str) {
 		int ns = str.length();
 		int left_digit = 0;
 		bool found = false;
@@ -23,10 +29,10 @@ namespace AoC_D1 {
 				found = true;
 				break;
 			}
-			for (int index = 0; index < digits.size(); index++) {
-				int nd = digits[index].length();
+			for (int index = 0; index < DIGITS.size(); index++) {
+				int nd = DIGITS[index].length();
 				int j = 0;
-				while (i + j < ns && j < nd && str[i + j] == digits[index][j]) j++;
+				while (i + j < ns && j < nd && str[i + j] == DIGITS[index][j]) j++;
 				if (j == nd) {
 					left_digit = index;
 					found = true;
@@ -43,10 +49,10 @@ namespace AoC_D1 {
 				found = true;
 				break;
 			}
-			for (int index = 0; index < digits.size(); index++) {
-				int nd = digits[index].length();
+			for (int index = 0; index < DIGITS.size(); index++) {
+				int nd = DIGITS[index].length();
 				int j = 0;
-				while (i - j >= 0 && j < nd && str[i - j] == digits[index][nd - 1 - j]) j++;
+				while (i - j >= 0 && j < nd && str[i - j] == DIGITS[index][nd - 1 - j]) j++;
 				if (j == nd) {
 					right_digit = index;
 					found = true;
@@ -56,26 +62,47 @@ namespace AoC_D1 {
 		}
 		return left_digit * 10 + right_digit;
 	}
+
+	// --------------------------- Part 1 ---------------------------------
+	int solvePart1(const vector<string>& lines) {
+		int sum = 0;
+		for (auto& line : lines) {
+			sum += parseOnlyDigits(line);
+		}
+		return sum;
+	}
+
+	// --------------------------- Part 2 ---------------------------------
+	int solvePart2(const vector<string>& lines) {
+		int sum = 0;
+		for (auto& line : lines) {
+			sum += parseStringAndDigits(line);
+		}
+		return sum;
+	}
 }
 
-int AoC_D1::solve()
+int AoC2023_D1::solve()
 {
-	std::ifstream file("./src/D1_Trebuchet/input.txt");
-	if (file.is_open()) {
-		std::string line_buffer;
-		int sum0 = 0, sum1 = 0;
-		while (std::getline(file, line_buffer)) {
-			auto n0 = numberOnlyDigits(line_buffer.c_str());
-			sum0 += n0;
-			auto n1 = numberTextAndDigits(line_buffer.c_str());
-			sum1 += n1;
-			//std::cout << "Sum = " << sum0 << "\t|\t" << line_buffer.c_str() << " -> " << n0 << "\r\n";
-			//std::cout << "Sum = " << sum1 << "\t|\t" << line_buffer.c_str() << " -> " << n1 << "\r\n";
-
-		}
-		file.close();
-		std::cout << "Only Digits Sum = " << sum0 << "\r\n";
-		std::cout << "Text and Digits Sum = " << sum1 << "\r\n";
+#if 0 // tests
+	auto lines = AoC::readFile("./src/D1_Trebuchet/small.txt");
+	if (lines.empty()) return 1;
+#else
+	auto lines = AoC::readFile("./src/D1_Trebuchet/input.txt");
+	if (lines.empty()) return 1;
+#endif
+	std::ostringstream oss;
+	for (auto& line : lines) {
+		oss << line << "\r\n";
 	}
+	oss << "\r\n";
+	std::cout << oss.str();
+	auto part1 = solvePart1(lines);
+	auto part2 = solvePart2(lines);
+
+	std::cout << "-----------------------------------------------------\r\n";
+	std::cout << "Part 1 = " << part1 << "\r\n"; // 54388
+	std::cout << "Part 2 = " << part2 << "\r\n"; // 53515
+	std::cout << "-----------------------------------------------------\r\n";
 	return 0;
 }

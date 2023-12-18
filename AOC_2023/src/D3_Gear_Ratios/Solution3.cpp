@@ -1,14 +1,14 @@
 #include "pch.h"
 #include "Solution3.h"
 
-namespace AoC_D3 {
+namespace AoC2023_D3 {
 	using namespace std;
 	class Solution;
 	class Part1;
 	class Part2;
 }
 
-class AoC_D3::Solution {
+class AoC2023_D3::Solution {
 public:
 	using Board = vector<string>;
 
@@ -31,7 +31,7 @@ protected:
 	}
 };
 
-class AoC_D3::Part1 :public AoC_D3::Solution {
+class AoC2023_D3::Part1 :public AoC2023_D3::Solution {
 public:
 	int sumValidPartsIds(const Board& board) {
 		int sum = 0;
@@ -94,7 +94,7 @@ private:
 };
 
 
-class AoC_D3::Part2 : public AoC_D3::Solution {
+class AoC2023_D3::Part2 : public AoC2023_D3::Solution {
 public:
 	int sumOfGearRatios(const Board& board) {
 		int sum = 0;
@@ -173,7 +173,7 @@ private:
 	}
 };
 
-int AoC_D3::solve()
+int AoC2023_D3::solve()
 {
 	auto lines = AoC::readFile("./src/D3_Gear_Ratios/input.txt");
 	if (lines.empty()) return 1;
@@ -188,17 +188,15 @@ int AoC_D3::solve()
 	Part1 sol1;
 	auto sum_ids = sol1.sumValidPartsIds(lines);
 	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Sum of the Ids of Valid Parts = " << sum_ids << "\r\n";
+	std::cout << "Sum of the Ids of Valid Parts = " << sum_ids << "\r\n"; // 535235
 	std::cout << "-----------------------------------------------------\r\n";
 
 	Part2 sol2;
 	auto sum_grs = sol2.sumOfGearRatios(lines);
 
 	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Sum of Valid Gear Ratios = " << sum_grs << "\r\n";
+	std::cout << "Sum of Valid Gear Ratios = " << sum_grs << "\r\n"; // 79844424
 	std::cout << "-----------------------------------------------------\r\n";
-
-
 
 	return 0;
 }

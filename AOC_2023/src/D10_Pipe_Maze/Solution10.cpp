@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution10.h"
 
-namespace AoC_D10 {
+namespace AoC2023_D10 {
 	using namespace std;
 	class Solution;
 };
 
-class AoC_D10::Solution {
+class AoC2023_D10::Solution {
 private:
 	typedef struct pos_t {
 		int r = -1, c = -1;
@@ -169,8 +169,8 @@ private:
 };
 
 
-int AoC_D10::solve() {
-	auto lines = AoC::readFile("./src/D10_Pipe_Maze/input.txt");
+int AoC2023_D10::solve() {
+	auto lines = AoC::readFile("./src/D10_Pipe_Maze/small.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

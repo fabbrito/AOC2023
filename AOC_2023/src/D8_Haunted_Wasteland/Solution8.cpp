@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution8.h"
 
-namespace AoC_D8 {
+namespace AoC2023_D8 {
 	using namespace std;
 	class Solution;
 }
 
-class AoC_D8::Solution {
+class AoC2023_D8::Solution {
 public:
 	Solution(vector<string> lines) {
 		sort(lines.begin() + 2, lines.end());
@@ -117,13 +117,13 @@ private:
 	}
 };
 
-int AoC_D8::solve() {
+int AoC2023_D8::solve() {
 	auto lines = AoC::readFile("./src/D8_Haunted_Wasteland/input.txt");
 	if (lines.empty()) return 1;
 	for (auto& line : lines) {
-		cout << line << "\r\n";
+		std::cout << line << "\r\n";
 	}
-	cout << "\r\n";
+	std::cout << "\r\n";
 
 	Solution solution(lines);
 	std::cout << "-----------------------------------------------------\r\n";

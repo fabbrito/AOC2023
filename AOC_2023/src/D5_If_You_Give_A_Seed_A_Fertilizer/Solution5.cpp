@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Solution5.h"
 
-namespace AoC_D5 {
+namespace AoC2023_D5 {
 	using namespace std;
 
 	// ---------------------------- Common ----------------------------
@@ -188,7 +188,7 @@ namespace AoC_D5 {
 	}
 }
 
-int AoC_D5::solve() {
+int AoC2023_D5::solve() {
 	auto lines = AoC::readFile("./src/D5_If_You_Give_A_Seed_A_Fertilizer/input.txt");
 	if (lines.empty()) return 1;
 	std::ostringstream oss;
@@ -196,12 +196,12 @@ int AoC_D5::solve() {
 		oss << line << "\r\n";
 	}
 	oss << "\r\n";
-	cout << oss.str();
+	std::cout << oss.str();
 
 	//Solution solution(lines);
 	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Individual Seeds = " << solvePart1(lines) << "\r\n";
-	std::cout << "Range of Seeds = " << solvePart2(lines) << "\r\n";
+	std::cout << "Individual Seeds = " << solvePart1(lines) << "\r\n"; // 278755257
+	std::cout << "Range of Seeds = " << solvePart2(lines) << "\r\n"; // 26829166
 	std::cout << "-----------------------------------------------------\r\n";
 
 

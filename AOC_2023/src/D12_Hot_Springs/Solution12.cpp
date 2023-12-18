@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Solution12.h"
 
-namespace AoC_D12 {
+namespace AoC2023_D12 {
 	using namespace std;
 
 	static constexpr int MAX_GROUPS = 100;
@@ -126,7 +126,7 @@ namespace AoC_D12 {
 
 }
 
-int AoC_D12::solve() {
+int AoC2023_D12::solve() {
 	auto lines = AoC::readFile("./src/D12_Hot_Springs/input.txt");
 	if (lines.empty()) return 1;
 

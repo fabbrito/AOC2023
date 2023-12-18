@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "Solution6.h"
 
-namespace AoC_D6 {
+namespace AoC2023_D6 {
 	using namespace std;
 	class Solution;
 }
 
-class AoC_D6::Solution {
+class AoC2023_D6::Solution {
 public:
 
 	uint64_t solvePart1(const vector<string>& lines) {
@@ -70,7 +70,7 @@ private:
 
 };
 
-int AoC_D6::solve() {
+int AoC2023_D6::solve() {
 	auto lines = AoC::readFile("./src/D6_Wait_For_It/input.txt");
 	if (lines.empty()) return 1;
 	std::ostringstream oss;
