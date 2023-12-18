@@ -6,10 +6,13 @@
 //#include <D5_Supply_Stacks/Solution5.h>
 //#include <D6_Tuning_Trouble/Solution6.h>
 //#include <D7_No_Space_Left_On_Device/Solution7.h>
-#include <D8_Treetop_Tree_House/Solution8.h>
+//#include <D8_Treetop_Tree_House/Solution8.h>
+//#include <D9_Rope_Bridge/Solution9.h>
+//#include <D10_Cathode_Ray_Tube/Solution10.h>
+#include <D11_Monkey_in_the_Middle/Solution11.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2022_D8::solve();
+	int code = AoC2022_D11::solve();
 	return code;
 }
