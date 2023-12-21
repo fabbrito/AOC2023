@@ -175,7 +175,7 @@ private:
 
 int AoC2023_D3::solve()
 {
-	auto lines = AoC::readFile("./src/D3_Gear_Ratios/input.txt");
+	auto lines = aoc::readFile("./src/D3_Gear_Ratios/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

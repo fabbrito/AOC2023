@@ -16,14 +16,14 @@ public:
 	};
 protected:
 	static int getCardId(string& str) {
-		auto card_info = AoC::parseString(str, ": ");
-		AoC::parseString(card_info.front(), " ");
+		auto card_info = aoc::parseString(str, ": ");
+		aoc::parseString(card_info.front(), " ");
 		return stoi(card_info.front());
 	}
 
 	static vector<int> getNumbers(string str) {
 		vector<int> output;
-		auto str_vec = AoC::parseString(str, " ");
+		auto str_vec = aoc::parseString(str, " ");
 		for (auto& elem : str_vec) {
 			// to ignore double spaces
 			if (elem.size() == 0) continue;
@@ -36,7 +36,7 @@ protected:
 		CardData output;
 		output.id = getCardId(game);
 
-		auto card_info = AoC::parseString(game, " | ");
+		auto card_info = aoc::parseString(game, " | ");
 		output.winning_numbers = getNumbers(card_info.front());
 		output.card_numbers = getNumbers(card_info.back());
 
@@ -85,7 +85,7 @@ public:
 
 int AoC2023_D4::solve()
 {
-	auto lines = AoC::readFile("./src/D4_Scratch_Cards/input.txt");
+	auto lines = aoc::readFile("./src/D4_Scratch_Cards/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

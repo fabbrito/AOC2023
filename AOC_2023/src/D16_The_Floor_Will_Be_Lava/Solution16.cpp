@@ -174,7 +174,7 @@ namespace AoC2023_D16 {
 
 int AoC2023_D16::solve() {
 #if 1 // tests
-	auto lines = AoC::readFile("./src/D16_The_Floor_Will_Be_Lava/small.txt");
+	auto lines = aoc::readFile("./src/D16_The_Floor_Will_Be_Lava/small.txt");
 	if (lines.empty()) return 1;
 
 	// pretty print
@@ -204,8 +204,8 @@ int AoC2023_D16::solve() {
 	auto part2 = solvePart2(lines);
 	assert(part2 == 51);
 #else
-	auto lines = AoC::readFile("./src/D16_The_Floor_Will_Be_Lava/input.txt");
-	if (lines.empty()) return 1;
+	auto lines = aoc::readFile("./src/D16_The_Floor_Will_Be_Lava/input.txt");
+	if (lines.emptyInterval()) return 1;
 
 	std::ostringstream oss;
 	for (auto& line : lines) {

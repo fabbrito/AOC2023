@@ -118,7 +118,7 @@ private:
 };
 
 int AoC2023_D8::solve() {
-	auto lines = AoC::readFile("./src/D8_Haunted_Wasteland/input.txt");
+	auto lines = aoc::readFile("./src/D8_Haunted_Wasteland/input.txt");
 	if (lines.empty()) return 1;
 	for (auto& line : lines) {
 		std::cout << line << "\r\n";

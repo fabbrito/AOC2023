@@ -157,7 +157,7 @@ namespace AoC2023_D17 {
 
 int AoC2023_D17::solve() {
 #if 0 // tests
-	auto lines = AoC::readFile("./src/D17_Clumsy_Crucible/small.txt");
+	auto lines = aoc::readFile("./src/D17_Clumsy_Crucible/small.txt");
 	if (lines.empty()) return 1;
 #elif 0
 	vector<string> lines = {
@@ -168,7 +168,7 @@ int AoC2023_D17::solve() {
 		"999999999991",
 	};
 #else
-	auto lines = AoC::readFile("./src/D17_Clumsy_Crucible/input.txt");
+	auto lines = aoc::readFile("./src/D17_Clumsy_Crucible/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

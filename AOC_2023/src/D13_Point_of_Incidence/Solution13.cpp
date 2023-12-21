@@ -114,7 +114,7 @@ namespace AoC2023_D13 {
 }
 
 int AoC2023_D13::solve() {
-	auto lines = AoC::readFile("./src/D13_Point_of_Incidence/input.txt");
+	auto lines = aoc::readFile("./src/D13_Point_of_Incidence/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

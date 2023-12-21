@@ -23,13 +23,13 @@ namespace AoC2023_D5 {
 		while (lines.size() > 0) {
 			Data data;
 			string name_line = consumeLine(lines);
-			string name = AoC::parseString(name_line, " ").front();
-			vector<string> fromTo = AoC::parseString(name, "-to-");
+			string name = aoc::parseString(name_line, " ").front();
+			vector<string> fromTo = aoc::parseString(name, "-to-");
 			data.fromTo = { fromTo.front(), fromTo.back() };
 
 			while (lines.size() > 0 && lines.front() != "") {
 				auto line = consumeLine(lines);
-				vector<string> range_s = AoC::parseString(line, " ");
+				vector<string> range_s = aoc::parseString(line, " ");
 
 				auto length = stoull(range_s[2]);
 				auto dest_start = stoull(range_s[0]);
@@ -59,7 +59,7 @@ namespace AoC2023_D5 {
 	// ---------------------------- Part 1 ----------------------------
 	static vector<uint64_t> getIndividualSeeds(vector<string>& lines) {
 		auto line = consumeLine(lines);
-		auto seeds_s = AoC::parseString(line, " ");
+		auto seeds_s = aoc::parseString(line, " ");
 		seeds_s.erase(seeds_s.begin());
 		vector<uint64_t> seeds;
 		for (auto& seed_s : seeds_s) {
@@ -95,7 +95,7 @@ namespace AoC2023_D5 {
 	// ---------------------------- Part 2 ----------------------------
 	static vector<Range> getSeedRanges(vector<string>& lines) {
 		auto line = consumeLine(lines);
-		auto seeds_s = AoC::parseString(line, " ");
+		auto seeds_s = aoc::parseString(line, " ");
 		seeds_s.erase(seeds_s.begin());
 		vector<Range> seeds_vec;
 		for (auto i = 0; i < seeds_s.size(); i += 2) {
@@ -189,8 +189,14 @@ namespace AoC2023_D5 {
 }
 
 int AoC2023_D5::solve() {
-	auto lines = AoC::readFile("./src/D5_If_You_Give_A_Seed_A_Fertilizer/input.txt");
+#if 0 // tests
+	auto lines = aoc::readFile("./src/D5_If_You_Give_A_Seed_A_Fertilizer/small.txt");
 	if (lines.empty()) return 1;
+#else
+	auto lines = aoc::readFile("./src/D5_If_You_Give_A_Seed_A_Fertilizer/input.txt");
+	if (lines.empty()) return 1;
+#endif
+
 	std::ostringstream oss;
 	for (auto& line : lines) {
 		oss << line << "\r\n";
@@ -198,13 +204,13 @@ int AoC2023_D5::solve() {
 	oss << "\r\n";
 	std::cout << oss.str();
 
-	//Solution solution(lines);
-	std::cout << "-----------------------------------------------------\r\n";
-	std::cout << "Individual Seeds = " << solvePart1(lines) << "\r\n"; // 278755257
-	std::cout << "Range of Seeds = " << solvePart2(lines) << "\r\n"; // 26829166
-	std::cout << "-----------------------------------------------------\r\n";
+	auto part1 = solvePart1(lines);
+	auto part2 = solvePart2(lines);
 
-
+	std::cout << "-----------------------------------------------------\r\n";
+	std::cout << "Part 1 = " << part1 << "\r\n"; // 278755257
+	std::cout << "Part 2 = " << part2 << "\r\n"; // 26829166
+	std::cout << "-----------------------------------------------------\r\n";
 
 	return 0;
 }

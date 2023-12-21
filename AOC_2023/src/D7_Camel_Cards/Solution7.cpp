@@ -111,7 +111,7 @@ private:
 		vector<Game> games;
 		for (auto& line : lines) {
 			Game game;
-			auto info = AoC::parseString(line, " ", true);
+			auto info = aoc::parseString(line, " ", true);
 			for (int i = 0; i < 5; i++) {
 				game.cards[i] = cardValue(info[0][i], order);
 			}
@@ -132,7 +132,7 @@ private:
 };
 
 int AoC2023_D7::solve() {
-	auto lines = AoC::readFile("./src/D7_Camel_Cards/input.txt");
+	auto lines = aoc::readFile("./src/D7_Camel_Cards/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

@@ -17,15 +17,15 @@ namespace AoC2023_D2 {
 		vector<game_t> games;
 		for (string line : lines) {
 			game_t game;
-			auto infoVec = AoC::parseString(line, ": ", true);
-			game.id = std::stoi(AoC::parseString(infoVec.front(), " ").back());
+			auto infoVec = aoc::parseString(line, ": ", true);
+			game.id = std::stoi(aoc::parseString(infoVec.front(), " ").back());
 
-			auto roundsVec = AoC::parseString(infoVec.back(), "; ", true);
+			auto roundsVec = aoc::parseString(infoVec.back(), "; ", true);
 			game.rounds = roundsVec.size();
 			for (string round : roundsVec) {
-				auto turnsVec = AoC::parseString(round, ", ");
+				auto turnsVec = aoc::parseString(round, ", ");
 				for (auto& turn : turnsVec) {
-					auto tokenVec = AoC::parseString(turn, " ");
+					auto tokenVec = aoc::parseString(turn, " ");
 					auto& token = tokenVec[1];
 					auto numCubes = std::stoi(tokenVec[0]);
 					if (game.tokenMap.find(token) != game.tokenMap.end()) {
@@ -80,10 +80,10 @@ namespace AoC2023_D2 {
 int AoC2023_D2::solve()
 {
 #if 1 // tests
-	auto lines = AoC::readFile("./src/D2_Cube_Conundrum/small.txt");
+	auto lines = aoc::readFile("./src/D2_Cube_Conundrum/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D2_Cube_Conundrum/input.txt");
+	auto lines = aoc::readFile("./src/D2_Cube_Conundrum/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

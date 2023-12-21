@@ -176,7 +176,7 @@ namespace AoC2023_D14 {
 }
 
 int AoC2023_D14::solve() {
-	auto lines = AoC::readFile("./src/D14_Parabolic_Reflector_Dish/input.txt");
+	auto lines = aoc::readFile("./src/D14_Parabolic_Reflector_Dish/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

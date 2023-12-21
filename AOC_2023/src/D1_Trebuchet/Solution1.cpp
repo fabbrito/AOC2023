@@ -85,10 +85,10 @@ namespace AoC2023_D1 {
 int AoC2023_D1::solve()
 {
 #if 0 // tests
-	auto lines = AoC::readFile("./src/D1_Trebuchet/small.txt");
+	auto lines = aoc::readFile("./src/D1_Trebuchet/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D1_Trebuchet/input.txt");
+	auto lines = aoc::readFile("./src/D1_Trebuchet/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

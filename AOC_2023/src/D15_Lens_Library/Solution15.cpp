@@ -75,7 +75,7 @@ namespace AoC2023_D15 {
 
 	vector<box_t> parseSequence(const vector<string>& lines) {
 		string line = lines.front();
-		auto data = AoC::parseString(line, ",");
+		auto data = aoc::parseString(line, ",");
 		vector<box_t> boxes;
 		for (auto& info : data) {
 			string name = "";
@@ -102,7 +102,7 @@ namespace AoC2023_D15 {
 	// --------------------------- Part 1 ---------------------------------
 	int64_t solvePart1(const vector<string>& lines) {
 		string line = lines.front();
-		auto data = AoC::parseString(line, ",");
+		auto data = aoc::parseString(line, ",");
 		int64_t sum = 0;
 		for (auto& str : data) {
 			sum += (int64_t)hasher(str);
@@ -124,10 +124,10 @@ namespace AoC2023_D15 {
 int AoC2023_D15::solve() {
 #if 0 // tests
 	assert(hasher("HASH") == 52);
-	auto lines = AoC::readFile("./src/D15_Lens_Library/small.txt");
-	if (lines.empty()) return 1;
+	auto lines = aoc::readFile("./src/D15_Lens_Library/small.txt");
+	if (lines.emptyInterval()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D15_Lens_Library/input.txt");
+	auto lines = aoc::readFile("./src/D15_Lens_Library/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

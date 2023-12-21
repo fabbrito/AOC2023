@@ -140,7 +140,7 @@ private:
 };
 
 int AoC2023_D11::solve() {
-	auto lines = AoC::readFile("./src/D11_Cosmic_Expansion/input.txt");
+	auto lines = aoc::readFile("./src/D11_Cosmic_Expansion/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

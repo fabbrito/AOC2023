@@ -127,7 +127,7 @@ namespace AoC2023_D12 {
 }
 
 int AoC2023_D12::solve() {
-	auto lines = AoC::readFile("./src/D12_Hot_Springs/input.txt");
+	auto lines = aoc::readFile("./src/D12_Hot_Springs/input.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

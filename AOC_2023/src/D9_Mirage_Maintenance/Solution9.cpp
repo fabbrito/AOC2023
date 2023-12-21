@@ -69,7 +69,7 @@ private:
 	void setData(const vector<string>& lines) {
 		for (string line : lines) {
 			vector<int> aux;
-			auto str_vec = AoC::parseString(line, " ", true);
+			auto str_vec = aoc::parseString(line, " ", true);
 			for (auto& elem : str_vec) {
 				aux.emplace_back(stoi(elem));
 			}
@@ -79,7 +79,7 @@ private:
 };
 
 int AoC2023_D9::solve() {
-	auto lines = AoC::readFile("./src/D9_Mirage_Maintenance/input.txt");
+	auto lines = aoc::readFile("./src/D9_Mirage_Maintenance/input.txt");
 	if (lines.empty()) return 1;
 	std::ostringstream oss;
 	for (auto& line : lines) {

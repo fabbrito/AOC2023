@@ -170,7 +170,7 @@ private:
 
 
 int AoC2023_D10::solve() {
-	auto lines = AoC::readFile("./src/D10_Pipe_Maze/small.txt");
+	auto lines = aoc::readFile("./src/D10_Pipe_Maze/small.txt");
 	if (lines.empty()) return 1;
 
 	std::ostringstream oss;

@@ -44,7 +44,7 @@ namespace AoC2023_D18 {
 		pos_t delta = { 0,0 };
 		long long length = 1;
 		for (string line : lines) {
-			auto info = AoC::parseString(line, " ", true);
+			auto info = aoc::parseString(line, " ", true);
 			if (!swapCodes) {
 				auto moveIdx = MOVES.find(info[0]);
 				if (moveIdx == std::string::npos) break;
@@ -97,10 +97,10 @@ namespace AoC2023_D18 {
 
 int AoC2023_D18::solve() {
 #if 0 // tests
-	auto lines = AoC::readFile("./src/D18_Lavaduct_Lagoon/small.txt");
+	auto lines = aoc::readFile("./src/D18_Lavaduct_Lagoon/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D18_Lavaduct_Lagoon/input.txt");
+	auto lines = aoc::readFile("./src/D18_Lavaduct_Lagoon/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

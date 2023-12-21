@@ -32,7 +32,7 @@ public:
 private:
 	static vector<uint64_t> parseMultipleData(size_t line_idx, vector<string> lines) {
 		vector<uint64_t> output;
-		auto vec = AoC::parseString(lines[line_idx], " ", true);
+		auto vec = aoc::parseString(lines[line_idx], " ", true);
 		vec.erase(vec.begin());
 		for (auto& elem : vec) {
 			output.emplace_back(stoull(elem));
@@ -41,7 +41,7 @@ private:
 	}
 
 	static uint64_t parseData(size_t line_idx, vector<string> lines) {
-		auto vec = AoC::parseString(lines[line_idx], " ", true);
+		auto vec = aoc::parseString(lines[line_idx], " ", true);
 		vec.erase(vec.begin());
 		string aux;
 		for (auto& elem : vec) {
@@ -71,7 +71,7 @@ private:
 };
 
 int AoC2023_D6::solve() {
-	auto lines = AoC::readFile("./src/D6_Wait_For_It/input.txt");
+	auto lines = aoc::readFile("./src/D6_Wait_For_It/input.txt");
 	if (lines.empty()) return 1;
 	std::ostringstream oss;
 	for (auto& line : lines) {
