@@ -46,7 +46,7 @@ namespace AoC2022_D9 {
 	vector<move_t> parseMoves(const vector<string>& lines) {
 		vector<move_t> moves;
 		for (string line : lines) {
-			auto info = AoC::parseString(line, " ");
+			auto info = aoc::parseString(line, " ");
 			coord_t delta = { 0,0 };
 			switch (info[0][0])
 			{
@@ -67,23 +67,6 @@ namespace AoC2022_D9 {
 		}
 		return moves;
 	}
-
-	/*
-	for (int r = 0; r < move.reps; r++) {
-		head += move.delta;
-		auto diff = head - tail;
-		if (std::abs(diff.x) >= 2 || std::abs(diff.y) >= 2) {
-			tail = headPositions.back();
-		}
-		else {
-			tail += {diff.x / 2, diff.y / 2};
-		}
-		if (head != headPositions.back())
-			headPositions.push_back(head);
-		if (tail != tailPositions.back())
-			tailPositions.push_back(tail);
-	}
-	*/
 
 	bridge_t computeMoves(const vector<move_t>& moves, int ropeSize = 2) {
 		bridge_t bridge(ropeSize);
@@ -147,26 +130,21 @@ namespace AoC2022_D9 {
 }
 
 int AoC2022_D9::solve() {
-#if 1 // smaller test: part 1 = 13
-	auto lines = AoC::readFile("./src/D9_Rope_Bridge/small.txt");
+#if 0 // smaller test: part 1 = 13
+	auto lines = aoc::readFile("./src/D9_Rope_Bridge/small.txt");
 	if (lines.empty()) return 1;
 	auto test1 = solvePart1(lines);
 	assert(test1 == 13);
 #elif 0 // bigger test: part 2 = 36
-	auto lines = AoC::readFile("./src/D9_Rope_Bridge/mid.txt");
+	auto lines = aoc::readFile("./src/D9_Rope_Bridge/mid.txt");
 	if (lines.empty()) return 1;
 	auto test2 = solvePart2(lines);
 	assert(test2 == 36);
 #else
-	auto lines = AoC::readFile("./src/D9_Rope_Bridge/input.txt");
+	auto lines = aoc::readFile("./src/D9_Rope_Bridge/input.txt");
 	if (lines.empty()) return 1;
 #endif
-	std::ostringstream oss;
-	for (auto& line : lines) {
-		oss << line << "\r\n";
-	}
-	oss << "\r\n";
-	cout << oss.str();
+	aoc::prettyPrint(lines);
 
 	auto part1 = solvePart1(lines);
 	auto part2 = solvePart2(lines);

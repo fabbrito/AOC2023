@@ -171,10 +171,10 @@ namespace AoC2022_D8 {
 
 int AoC2022_D8::solve() {
 #if 0 // tests
-	auto lines = AoC::readFile("./src/D8_Treetop_Tree_House/small.txt");
+	auto lines = aoc::readFile("./src/D8_Treetop_Tree_House/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D8_Treetop_Tree_House/input.txt");
+	auto lines = aoc::readFile("./src/D8_Treetop_Tree_House/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	std::ostringstream oss;

@@ -110,8 +110,13 @@ namespace AoC2022_D3 {
 
 
 int AoC2022_D3::solve() {
-	auto lines = AoC::readFile("./src/D3_Rucksack_Reorganization/input.txt");
+#if 0 // test
+	auto lines = aoc::readFile("./src/D3_Rucksack_Reorganization/small.txt");
 	if (lines.empty()) return 1;
+#else
+	auto lines = aoc::readFile("./src/D3_Rucksack_Reorganization/input.txt");
+	if (lines.empty()) return 1;
+#endif
 
 	std::ostringstream oss;
 	for (auto& line : lines) {

@@ -17,9 +17,9 @@ namespace AoC2022_D4 {
 		vector<group_t> groups;
 		for (string line : lines) {
 			group_t group{};
-			auto info = AoC::parseString(line, ",");
-			auto leftRange = AoC::parseString(info[0], "-");
-			auto rightRange = AoC::parseString(info[1], "-");
+			auto info = aoc::parseString(line, ",");
+			auto leftRange = aoc::parseString(info[0], "-");
+			auto rightRange = aoc::parseString(info[1], "-");
 			group.leftElf = { stoi(leftRange[0]),stoi(leftRange[1]) };
 			group.rightElf = { stoi(rightRange[0]),stoi(rightRange[1]) };
 			groups.push_back(group);
@@ -61,8 +61,13 @@ namespace AoC2022_D4 {
 
 
 int AoC2022_D4::solve() {
-	auto lines = AoC::readFile("./src/D4_Camp_Cleanup/input.txt");
+#if 0 // test
+	auto lines = aoc::readFile("./src/D4_Camp_Cleanup/small.txt");
 	if (lines.empty()) return 1;
+#else
+	auto lines = aoc::readFile("./src/D4_Camp_Cleanup/input.txt");
+	if (lines.empty()) return 1;
+#endif
 
 	std::ostringstream oss;
 	for (auto& line : lines) {

@@ -57,7 +57,7 @@ int AoC2022_D6::solve() {
 	}
 
 #else
-	auto lines = AoC::readFile("./src/D6_Tuning_Trouble/input.txt");
+	auto lines = aoc::readFile("./src/D6_Tuning_Trouble/input.txt");
 	if (lines.empty()) return 1;
 
 	auto& line = lines.front();

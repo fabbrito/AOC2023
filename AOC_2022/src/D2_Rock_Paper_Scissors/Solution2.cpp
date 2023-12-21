@@ -82,9 +82,13 @@ namespace AoC2022_D2 {
 
 
 int AoC2022_D2::solve() {
-	auto lines = AoC::readFile("./src/D2_Rock_Paper_Scissors/input.txt");
+#if 0 // test
+	auto lines = aoc::readFile("./src/D2_Rock_Paper_Scissors/small.txt");
 	if (lines.empty()) return 1;
-
+#else
+	auto lines = aoc::readFile("./src/D2_Rock_Paper_Scissors/input.txt");
+	if (lines.empty()) return 1;
+#endif
 	std::ostringstream oss;
 	for (auto& line : lines) {
 		oss << line << "\r\n";

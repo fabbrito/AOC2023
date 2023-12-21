@@ -38,7 +38,7 @@ namespace AoC2022_D7 {
 	folder_t* populateList(folder_t* head, const vector<string>& lines, int start, int length) {
 		for (int i = start; i < start + length; i++) {
 			string command = lines[i];
-			auto info = AoC::parseString(command, " ");
+			auto info = aoc::parseString(command, " ");
 			if (info[0] == "dir") {
 				folder_t* dir = new folder_t(info[1]);
 				head->addFolder(dir);
@@ -77,7 +77,7 @@ namespace AoC2022_D7 {
 		int i = 0;
 		while (i < lines.size()) {
 			string line = lines[i];
-			auto info = AoC::parseString(line, " ");
+			auto info = aoc::parseString(line, " ");
 			if (info[0] == "$" && info[1] == "cd") {
 				head = changeDir(head, info[2]);
 			}
@@ -138,18 +138,13 @@ namespace AoC2022_D7 {
 
 int AoC2022_D7::solve() {
 #if 0 // test
-	auto lines = AoC::readFile("./src/D7_No_Space_Left_On_Device/small.txt");
+	auto lines = aoc::readFile("./src/D7_No_Space_Left_On_Device/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D7_No_Space_Left_On_Device/input.txt");
+	auto lines = aoc::readFile("./src/D7_No_Space_Left_On_Device/input.txt");
 	if (lines.empty()) return 1;
 #endif
-	std::ostringstream oss;
-	for (auto& line : lines) {
-		oss << line << "\r\n";
-	}
-	oss << "\r\n";
-	std::cout << oss.str();
+	aoc::prettyPrint(lines);
 
 	std::cout << "-----------------------------------------------------\r\n";
 	std::cout << "Part 1 = " << solvePart1(lines) << "\r\n"; // 1792222

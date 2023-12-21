@@ -32,7 +32,7 @@ namespace AoC2022_D5 {
 		int idx = 0;
 		while (idx + 1 < lines.size() && lines[idx + 1] != "") idx++;
 		string line = lines[idx];
-		auto info = AoC::parseString(line, " ", true);
+		auto info = aoc::parseString(line, " ", true);
 		int nStacks = stoi(info.back());
 
 		// populate the stacks with data
@@ -42,7 +42,7 @@ namespace AoC2022_D5 {
 		// populate the moves vector with data
 		for (int i = idx + 2; i < lines.size(); i++) {
 			string move = lines[i];
-			auto move_info = AoC::parseString(move, " ", true);
+			auto move_info = aoc::parseString(move, " ", true);
 			int quant = stoi(move_info[1]);
 			int from = stoi(move_info[3]) - 1;
 			int to = stoi(move_info[5]) - 1;
@@ -100,9 +100,13 @@ namespace AoC2022_D5 {
 
 
 int AoC2022_D5::solve() {
-	auto lines = AoC::readFile("./src/D5_Supply_Stacks/input.txt");
+#if 0 // test
+	auto lines = aoc::readFile("./src/D5_Supply_Stacks/small.txt");
 	if (lines.empty()) return 1;
-
+#else
+	auto lines = aoc::readFile("./src/D5_Supply_Stacks/input.txt");
+	if (lines.empty()) return 1;
+#endif
 	std::ostringstream oss;
 	for (auto& line : lines) {
 		oss << line << "\r\n";

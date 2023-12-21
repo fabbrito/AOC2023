@@ -50,8 +50,13 @@ namespace AoC2022_D1 {
 
 
 int AoC2022_D1::solve() {
-	auto lines = AoC::readFile("./src/D1_Calorie_Counting/input.txt");
+#if 0 // test
+	auto lines = aoc::readFile("./src/D1_Calorie_Counting/small.txt");
 	if (lines.empty()) return 1;
+#else
+	auto lines = aoc::readFile("./src/D1_Calorie_Counting/input.txt");
+	if (lines.empty()) return 1;
+#endif
 
 	std::ostringstream oss;
 	for (auto& line : lines) {

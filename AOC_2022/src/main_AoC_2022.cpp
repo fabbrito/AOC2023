@@ -9,10 +9,11 @@
 //#include <D8_Treetop_Tree_House/Solution8.h>
 //#include <D9_Rope_Bridge/Solution9.h>
 //#include <D10_Cathode_Ray_Tube/Solution10.h>
-#include <D11_Monkey_in_the_Middle/Solution11.h>
+//#include <D11_Monkey_in_the_Middle/Solution11.h>
+#include <D12_Hill_Climbing_Algorithm/Solution12.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2022_D11::solve();
+	int code = AoC2022_D12::solve();
 	return code;
 }

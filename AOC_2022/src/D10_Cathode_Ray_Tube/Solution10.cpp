@@ -41,15 +41,14 @@ namespace AoC2022_D10 {
 	// -------------------------- Functions -------------------------------
 
 	void printCRT(vector<string> crt, int h = 6, int w = 40) {
-		std::ostringstream oss;
 		for (int i = 0; i < h; i++) {
-			oss << "|";
+			std::cout << "|";
 			for (int j = 0; j < w; j++) {
-				oss << crt[i][j];
+				std::cout << crt[i][j];
 			}
-			oss << "|\r\n";
+			std::cout << "|" << std::endl;
 		}
-		std::cout << oss.str();
+		std::cout << std::endl;
 	}
 
 	// --------------------------- Part 1 ---------------------------------
@@ -69,23 +68,15 @@ namespace AoC2022_D10 {
 }
 
 int AoC2022_D10::solve() {
-#if 1 // smaller test
-	auto lines = AoC::readFile("./src/D10_Cathode_Ray_Tube/small.txt");
+#if 0 // smaller test
+	auto lines = aoc::readFile("./src/D10_Cathode_Ray_Tube/small.txt");
 	if (lines.empty()) return 1;
 #else
-	auto lines = AoC::readFile("./src/D10_Cathode_Ray_Tube/input.txt");
+	auto lines = aoc::readFile("./src/D10_Cathode_Ray_Tube/input.txt");
 	if (lines.empty()) return 1;
 #endif
 	// pretty print
-	std::ostringstream oss;
-	for (int i = 0; i < lines.size(); i++) {
-		oss << i;
-		if (i <= 9) oss << "  ";
-		else if (10 <= i && i <= 99) oss << " ";
-		oss << " " << lines[i] << "\r\n";
-	}
-	oss << "\r\n";
-	cout << oss.str();
+	aoc::prettyPrint(lines);
 
 	auto part1 = solvePart1(lines);
 	auto part2 = solvePart2(lines);
