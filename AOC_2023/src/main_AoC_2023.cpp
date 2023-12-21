@@ -16,11 +16,12 @@
 //#include <D15_Lens_Library/Solution15.h>
 //#include <D16_The_Floor_Will_Be_Lava/Solution16.h>
 //#include <D17_Clumsy_Crucible/Solution17.h>
-#include <D18_Lavaduct_Lagoon/Solution18.h>
+//#include <D18_Lavaduct_Lagoon/Solution18.h>
+#include <D19_Aplenty/Solution19.h>
 
 int main(int argc, char** argv)
 {
-	int code = AoC2023_D18::solve();
+	int code = AoC2023_D19::solve();
 #ifndef DEBUG
 	std::cout << "Press enter to exit...";
 	std::cin.get();
